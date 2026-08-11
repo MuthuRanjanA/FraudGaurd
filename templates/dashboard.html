@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="mb-4">
+<h1>Transaction Safety Dashboard</h1>
+<p class="text-secondary">Choose what you want to do.</p>
+</div>
+<div class="row g-4">
+<div class="col-md-6">
+<div class="card p-4 h-100">
+<h3>🔎 Check a transaction</h3>
+<p>Enter the 30 model features and receive a clear fraud probability.</p>
+<a class="btn btn-primary" href="{{ url_for('predict_page') }}">Open prediction</a>
+</div>
+</div>
+<div class="col-md-6">
+<div class="card p-4 h-100">
+<h3>ℹ️ Understand the project</h3>
+<p>Learn how the dataset, model, SMOTE and probability score work.</p>
+<a class="btn btn-outline-primary" href="{{ url_for('about') }}">Read explanation</a>
+</div>
+</div>
+</div>
+{% endblock %}

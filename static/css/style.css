@@ -1,0 +1,7 @@
+body { background:#f6f8fb; }
+.hero { background:linear-gradient(135deg,#e8f0ff,#f8fbff); border:1px solid #dce7f8; }
+.card { border:1px solid #e4e8ef; border-radius:16px; box-shadow:0 5px 20px rgba(20,40,80,.05); }
+.auth-card { max-width:480px; margin-top:50px; }
+.result-card { max-width:720px; }
+.feature-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(110px,1fr)); gap:8px; }
+code { color:#b42318; }

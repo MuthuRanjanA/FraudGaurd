@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}FraudGuard | Home{% endblock %}
+{% block content %}
+<div class="hero p-5 rounded-4 mb-4">
+  <span class="badge text-bg-primary mb-3">Machine Learning + Security</span>
+  <h1 class="display-5 fw-bold">Detect suspicious card transactions.</h1>
+  <p class="lead">FraudGuard uses a Logistic Regression model trained with SMOTE and StandardScaler to estimate whether a transaction may be fraudulent.</p>
+  {% if current_user.is_authenticated %}
+    <a class="btn btn-primary btn-lg" href="{{ url_for('predict_page') }}">Start a prediction →</a>
+  {% else %}
+    <a class="btn btn-primary btn-lg" href="{{ url_for('register') }}">Create free account →</a>
+  {% endif %}
+</div>
+
+<div class="row g-4">
+  <div class="col-md-4"><div class="card h-100 p-3"><h4>🔐 Secure</h4><p>Password hashing, login sessions, CSRF protection and rate limiting.</p></div></div>
+  <div class="col-md-4"><div class="card h-100 p-3"><h4>🤖 ML Prediction</h4><p>The model returns a fraud probability instead of only a yes/no answer.</p></div></div>
+  <div class="col-md-4"><div class="card h-100 p-3"><h4>📱 Easy to understand</h4><p>The result page explains what the probability means and avoids technical jargon.</p></div></div>
+</div>
+
+<div class="alert alert-info mt-4">
+  <strong>Model status:</strong>
+  {% if model_ready %}Ready for predictions.{% else %}Not trained yet. Run <code>python src/train_model.py</code>.{% endif %}
+</div>
+{% endblock %}

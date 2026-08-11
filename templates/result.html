@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Prediction Result{% endblock %}
+{% block content %}
+{% set pct = probability * 100 %}
+<div class="result-card card p-5 text-center mx-auto">
+{% if prediction == 1 %}
+  <div class="display-3">⚠️</div>
+  <h1 class="text-danger">Potential Fraud</h1>
+  <p class="lead">The model found patterns that are more consistent with fraudulent transactions.</p>
+{% else %}
+  <div class="display-3">✅</div>
+  <h1 class="text-success">Likely Genuine</h1>
+  <p class="lead">The model did not find a strong fraud pattern in this transaction.</p>
+{% endif %}
+
+<div class="my-4">
+  <div class="d-flex justify-content-between"><strong>Fraud probability</strong><strong>{{ "%.2f"|format(pct) }}%</strong></div>
+  <div class="progress" style="height:24px"><div class="progress-bar" style="width:{{ pct }}%">{{ "%.1f"|format(pct) }}%</div></div>
+</div>
+
+<p class="text-secondary">Transaction amount: {{ amount }}</p>
+<div class="alert alert-info">This is an ML estimate, not a final financial decision. Review suspicious transactions using additional controls.</div>
+<a href="{{ url_for('predict_page') }}" class="btn btn-primary">Check another transaction</a>
+</div>
+{% endblock %}

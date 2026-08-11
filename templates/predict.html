@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Predict Fraud{% endblock %}
+{% block content %}
+<h1>Check a transaction</h1>
+<p class="text-secondary">Paste exactly 30 numeric values in dataset order.</p>
+
+<div class="alert alert-warning">
+  <strong>Why 30 values?</strong> The standard dataset contains Time, V1–V28 and Amount.
+  V1–V28 are anonymized mathematical features. They are not merchant names or personal information.
+</div>
+
+<form method="post" class="card p-4">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <label class="form-label fw-semibold">Transaction features</label>
+  <textarea name="features" class="form-control font-monospace" rows="6"
+    placeholder="Time, V1, V2, ..., V28, Amount"></textarea>
+  <div class="form-text mt-2">Example format: 0, -1.35, 2.14, ... , 0.12, 149.62</div>
+  <button class="btn btn-primary mt-3">Analyze transaction</button>
+</form>
+
+<div class="card p-4 mt-4">
+<h4>Feature order</h4>
+<div class="feature-grid">
+{% for name in feature_names %}
+<span class="badge text-bg-light border">{{ loop.index }}. {{ name }}</span>
+{% endfor %}
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% block content %}
+<h1>How FraudGuard works</h1>
+<div class="row g-4 mt-1">
+<div class="col-md-6"><div class="card p-4 h-100"><h3>1. Prepare data</h3><p>The transaction dataset is separated into 30 input features and the Class target.</p></div></div>
+<div class="col-md-6"><div class="card p-4 h-100"><h3>2. Scale features</h3><p>StandardScaler puts numeric features on comparable scales before training.</p></div></div>
+<div class="col-md-6"><div class="card p-4 h-100"><h3>3. Balance classes</h3><p>SMOTE creates synthetic examples for the minority fraud class during training.</p></div></div>
+<div class="col-md-6"><div class="card p-4 h-100"><h3>4. Predict</h3><p>Logistic Regression estimates the probability that a transaction belongs to the fraud class.</p></div></div>
+</div>
+{% endblock %}
